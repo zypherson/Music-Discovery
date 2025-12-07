@@ -5,6 +5,7 @@ import { getAccessToken, searchArtists } from "./services/spotify";
 import "./App.css";
 
 function App() {
+  //app is running smoothly as expected 
   const [token, setToken] = useState(null);
   const [artists, setArtists] = useState([]);
 
