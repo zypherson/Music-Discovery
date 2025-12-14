@@ -86,3 +86,7 @@
 .artist-card h3 {
   margin-top: 10px;
 }
+.artist-link {
+  text-decoration: none;
+  color: inherit;
+}
