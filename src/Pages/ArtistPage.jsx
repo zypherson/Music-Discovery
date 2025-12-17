@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAccessToken } from "../services/spotify";
+import { useNavigate } from "react-router-dom";
+
 
 function ArtistPage() {
   const { id } = useParams(); // artist id from URL
+  const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState(null);
   const [artist, setArtist] = useState(null);
@@ -50,6 +53,10 @@ function ArtistPage() {
 
   return (
     <div className="artist-page">
+      <button className="back-btn" onClick={() => navigate("/")}>
+       ← Back to Search
+      </button>
+
       <h1>{artist.name}</h1>
 
       <img
