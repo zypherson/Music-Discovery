@@ -90,3 +90,17 @@
   text-decoration: none;
   color: inherit;
 }
+.back-btn {
+  margin-bottom: 20px;
+  padding: 8px 14px;
+  background: transparent;
+  border: 1px solid #333;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.back-btn:hover {
+  background: #333;
+  color: white;
+}
