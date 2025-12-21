@@ -12,6 +12,8 @@ import {
 
 
 function ArtistPage() {
+  const [favorite, setFavorite] = useState(false);
+
   const { id } = useParams(); // artist id from URL
   const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
@@ -31,6 +33,10 @@ function ArtistPage() {
       });
       const artistData = await resArtist.json();
       setArtist(artistData);
+      setFavorite(isFavorite(artistData.id));
+      
+      
+      
 
       // Top Tracks
       const resTracks = await fetch(
@@ -57,6 +63,19 @@ function ArtistPage() {
   }, [id]);
 
   if (!artist) return <p>Loading artist...</p>;
+  function toggleFavorite() {
+    if (favorite) {
+      removeFavorite(artist.id);
+    } else {
+      addFavorite({
+        id: artist.id,
+        name: artist.name,
+        image: artist.images?.[0]?.url,
+      });
+    }
+    setFavorite(!favorite);
+  }
+  
 
   return (
     <div className="artist-page">
@@ -65,6 +84,10 @@ function ArtistPage() {
       </button>
 
       <h1>{artist.name}</h1>
+      <button className="fav-btn" onClick={toggleFavorite}>
+          {favorite ? "★ Remove Favorite" : "☆ Add to Favorites"}
+      </button>
+
 
       <img
         src={artist.images?.[0]?.url}
