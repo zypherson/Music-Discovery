@@ -1,7 +1,14 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAccessToken } from "../services/spotify";
 import { useNavigate } from "react-router-dom";
+import {
+  addFavorite,
+  removeFavorite,
+  isFavorite,
+} from "../utils/favorites";
+
 
 
 function ArtistPage() {
