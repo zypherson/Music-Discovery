@@ -85,7 +85,7 @@ function ArtistPage() {
 
       <h1>{artist.name}</h1>
       <button className="fav-btn" onClick={toggleFavorite}>
-          {favorite ? "★ Remove Favorite" : "☆ Add to Favorites"}
+        {favorite ? "★ Remove Favorite" : "☆ Add to Favorites"}
       </button>
 
 
