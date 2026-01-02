@@ -7,16 +7,26 @@ export function getFavorites() {
 export function isFavorite(id) {
   return getFavorites().some((artist) => artist.id === id);
 }
+function notifyFavoritesChange() {
+    window.dispatchEvent(new Event("favoritesUpdated"));
+  }
+  
 
-export function addFavorite(artist) {
-  const favorites = getFavorites();
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify([...favorites, artist])
-  );
-}
+  export function addFavorite(artist) {
+    const favorites = getFavorites();
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify([...favorites, artist])
+    );
+    notifyFavoritesChange();
+  }
 
-export function removeFavorite(id) {
-  const favorites = getFavorites().filter((a) => a.id !== id);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
-}
+  export function removeFavorite(id) {
+    const favorites = getFavorites().filter((a) => a.id !== id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+    notifyFavoritesChange();
+  }
+export function getFavoritesCount() {
+    return getFavorites().length;
+  }
+  
